@@ -2,7 +2,7 @@
 
 <div class="grid  place-items-center">
 
-  <form id="backgradient" class=" shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[375px]">
+  <form id="backgradient" class=" shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[375px] lg:w-[500px]">
  <!-- ------------------ title ------------------ -->
  <div class="mb-4">
       <label class="block text-gray-100 font-medium text-lg mb-2" for="title">
