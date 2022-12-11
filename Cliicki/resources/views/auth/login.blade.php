@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
+            <a href="/" title='home'>
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
@@ -37,25 +37,39 @@
 
 
 
+            <!-- Signup  -->
 
+            <div class="grid justify-items-end ">
+                <a class="underline  text-gray-200  hover:text-gray-50 mt-1  " href="{{ route('register') }}">
+                    {{ __("S'enregistrer") }}
+                </a>
+            </div>
 
             <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
+
+            <div class="block -mt-3 ml-1">
+                <label for="remember_me" class="inline-flex items-center ">
                     <input id="remember_me" type="checkbox" class="rounded  border-gray-300 dark:border-gray-700 text-red-600 shadow-sm focus:ring-red-500 dark:focus:ring-red-600 dark:focus:ring-offset-gray-800" name="remember">
                     <span class="ml-2 text-sm text-gray-200  hover:text-gray-50 ">{{ __('Me souvenir') }}</span>
                 </label>
+           
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+          
+
+            <!-- Password lost -->
+
+            <div class="flex items-center justify-end mt-4 ">
                 @if (Route::has('password.request'))
-                    <a class="underline  text-gray-200  hover:text-gray-50   " href="{{ route('password.request') }}">
+                    <a class="underline  text-gray-200  hover:text-gray-50 mr-2 " href="{{ route('password.request') }}">
                         {{ __('Mot de passe oublié?') }}
                     </a>
                 @endif
 
+              
+
                 <x-primary-button class="ml-3">
-                    {{ __('Log in') }}
+                    {{ __('Connexion') }}
                 </x-primary-button>
             </div>
         </form>

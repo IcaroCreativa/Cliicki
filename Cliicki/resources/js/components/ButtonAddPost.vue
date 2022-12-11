@@ -1,5 +1,5 @@
 <template lang="">
-    <router-link to="addpost">
+   
         <button
         @click="getauthenticate()"
             type="button" 
@@ -9,7 +9,7 @@
             <span class="text-xs md:text-sm lg:text-lg">Add Post</span>
         </button>  
 
-    </router-link> 
+
 
  
 
@@ -35,14 +35,10 @@ export default {
         .then(result => { 
                 console.log(result);
                 if (result.message=="Unauthenticated."){
-                    
-                    this.$swal("Super initiative. Pour créer un post il faut s'identifier!").then(result=>{
-                    window.location.href = this.$path + "login";
-                
-                })
-                
+                     window.location.href = this.$path + "login";
+            }else{
+                window.location.href = this.$path + "addpost";
             }
-            
             })
         .catch(error => console.log('error', error));
             }

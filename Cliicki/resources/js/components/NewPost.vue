@@ -6,25 +6,25 @@
  <!-- ------------------ title ------------------ -->
  <div class="mb-4">
       <label class="block text-gray-100 font-medium text-lg mb-2" for="title">
-        Titre
+        Titre *
       </label>
-      <input required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" type="text" v-model="title" placeholder="Entrez un titre">
+      <input required v-on:change="deleteErrorMessage()" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" type="text" v-model="title" placeholder="Entrez un titre">
     </div>
-
+    <p v-if="error_title" class="text-red-200 ml-1 -mt-3 mb-3">{{this.error_message}}</p>
 
   <!-- ------------------ URL ------------------ -->
     <div class="mb-4">
       <label class="block text-gray-100 font-medium text-lg mb-2" for="url">
-        URL
+        URL *
       </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="url" type="text" v-model="url" placeholder="copy URL">
-  
+      <input v-on:change="deleteErrorMessage(); checkUrl(this.url)" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="url" type="text" v-model="url" placeholder="Collez l'URL">
+      <p v-if="error_url" class="text-red-200 ml-1">{{this.error_message}}</p>
     </div>
 
     <!-- ------------------ CATEGORIES ------------------ -->
     <div class="menu categories mt-6">
             <label class="block text-gray-100 font-medium text-lg mb-2" for="category">
-              Catégorie
+              Catégorie *
             </label>
             <div class="bg-downy rounded">
                 <details class = "group py-2 px-2 text-left font-bold mt-3">
@@ -53,10 +53,11 @@
 
                 <div class="flex items-center pl-3" v-for="(item, index) in items" :key="index">
                   <label  class="py-2 ml-2 w-full text-sm md:text-base font-medium text-eagle-green">
-                  <input type="radio"  :value="item.value" v-model="checkedValues" class="w-4 h-4 text-san-juan border-gray-400 rounded focus:ring-2 focus:ring-[#ef233c] dark:focus:cardinal"/>
+                  <input type="radio" v-on:change="deleteErrorMessage()" :value="item.value" v-model="checkedValues" class="w-4 h-4 text-san-juan border-gray-400 rounded focus:ring-2 focus:ring-[#ef233c] dark:focus:cardinal"/>
                  {{ item.label }}
                   </label>
                 </div>
+                <p v-if="error_categories" class="text-red-200 ml-1 -mt-3 mb-3">{{this.error_message}}</p>
               
 <!-- title:{{title}}
 url: {{url}}
@@ -73,15 +74,15 @@ stars: {{stars}} -->
     <!-- ------------------ COMMENTAIRES ------------------ -->
     <div class="mb-4 mt-6">
       <label class="flex text-gray-100 font-medium text-lg mb-2" for="comment">
-        Commentaire
+        Commentaire *
       </label>
-      <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment" v-model="content" placeholder="leave your comment"></textarea>    
-    
+      <textarea v-on:change="deleteErrorMessage()" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment" v-model="content" placeholder="Laissez votre commentaire"></textarea>    
+      <p v-if="error_comment" class="text-red-200 ml-1 -mt-3 mb-3">{{this.error_message}}</p>
     </div> 
 
     <!-- ------------------ ETOILES ------------------ -->
     <label class="block text-gray-100 font-medium text-lg mb-4" for="category">
-              Notez
+              Notez 
     </label>
    
     <div class=" -mt-4">
@@ -138,7 +139,7 @@ stars: {{stars}} -->
       <label class="block text-gray-100 font-medium text-lg mb-2" for="tags">
         Tags
       </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="tags" type="text" v-model="tags" placeholder="tags">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="tags" type="text" v-model="tags" placeholder="Ajoutez un tag à votre commentaire">
     
     </div>
    
@@ -191,7 +192,11 @@ export default {
       tag_id:'',
       toogle:false,
       stars:5,
-
+      error_title:false,
+      error_url:false,
+      error_categories:false,
+      error_comment:false,
+      error_message:'Ce champ est obligatoire'
     
   }
   },
@@ -204,16 +209,16 @@ export default {
     createPost(){
 
       if(this.title==''){
-        this.$swal("Merci de choisir un titre pour votre commentaire!")
+       this.error_title=true;
         }  
       else if(this.url==''){
-        this.$swal("Merci de choisir un Url pour votre commentaire!")
+       this.error_url=true;
                   }
       else if(this.checkedValues==''){
-        this.$swal("Merci de choisir une catégorie pour votre commentaire!")
+       this.error_categories=true;
                   }
       else if(this.content==''){
-        this.$swal("Merci bien d'écrire votre commentaire!")
+       this.error_comment=true;
                   }             
       else if(this.tags==''){
         this.$swal("Merci d'ajouter un tag pour votre commentaire!")
@@ -223,6 +228,59 @@ export default {
     }
 
     },
+
+    deleteErrorMessage(){
+      this.error_title=false;
+      this.error_url=false;
+      this.error_categories=false;
+      this.error_comment=false;
+
+    },
+
+
+
+
+    checkUrl(url) {
+  
+      // Envoyez une requête de type HEAD à l'URL
+      fetch(url, { method: 'HEAD' })
+        .then(response => {
+          // Vérifiez le code de réponse
+          if (response.ok) {
+            // Si la réponse est réussie (code de réponse 200-299),
+            // l'URL existe et est sécurisée
+            console.log('L\'URL existe et est sécurisée.');
+          } else {
+            // Si la réponse n'est pas réussie (code de réponse 400-599),
+            // l'URL peut ne pas exister ou ne pas être sécurisée
+            console.log('L\'URL peut ne pas exister ou ne pas être sécurisée.');
+          }
+        })
+        .catch(error => {
+          // Si une erreur se produit, l'URL peut ne pas exister ou ne pas être sécurisée
+          console.log('L\'URL peut ne pas exister ou ne pas être sécurisée.');
+        });
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
       
     createPostEnd(){
           
