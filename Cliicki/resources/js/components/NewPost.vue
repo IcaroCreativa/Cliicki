@@ -26,10 +26,10 @@
             <label class="block text-gray-100 font-medium text-lg mb-2" for="category">
               Catégorie *
             </label>
-            <div class="bg-downy rounded">
+            <div id="backgradient1" class="rounded">
                 <details class = "group py-2 px-2 text-left font-bold mt-3">
                     <summary
-                        class = "flex cursor-pointer px-2 py-2 text-black hover:bg-white hover:text-san-juan"
+                        class = "flex cursor-pointer px-2 py-2 text-white rounded-sm hover:bg-white hover:text-san-juan"
                         >
                         <span class = "text-sm font-medium">Choisissez une Catégorie</span>
                         
@@ -52,9 +52,9 @@
                     </summary>
 
                 <div class="flex items-center pl-3" v-for="(item, index) in items" :key="index">
-                  <label  class="py-2 ml-2 w-full text-sm md:text-base font-medium text-eagle-green">
-                  <input type="radio" v-on:change="deleteErrorMessage()" :value="item.value" v-model="checkedValues" class="w-4 h-4 text-san-juan border-gray-400 rounded focus:ring-2 focus:ring-[#ef233c] dark:focus:cardinal"/>
-                 {{ item.label }}
+                  <label  class="py-2 ml-2  w-48 text-sm md:text-base font-medium text-white hover:bg-[#0e51ae41] rounded-lg ">
+                  <input type="radio" v-on:change="deleteErrorMessage()" :value="item.value" v-model="checkedValues" class="w-4 h-4 pl-4  text-[#0A59C3] border-gray-400 rounded focus:ring-2 focus:ring-[#0d6eee] "/>
+                  &nbsp;{{item.label }}
                   </label>
                 </div>
                 <p v-if="error_categories" class="text-red-200 ml-1 -mt-3 mb-3">{{this.error_message}}</p>
@@ -196,7 +196,8 @@ export default {
       error_url:false,
       error_categories:false,
       error_comment:false,
-      error_message:'Ce champ est obligatoire'
+      error_message:'Ce champ est obligatoire',
+ 
     
   }
   },
@@ -241,27 +242,26 @@ export default {
 
 
     checkUrl(url) {
-  
-      // Envoyez une requête de type HEAD à l'URL
-      fetch(url, { method: 'HEAD' })
-        .then(response => {
-          // Vérifiez le code de réponse
-          if (response.ok) {
-            // Si la réponse est réussie (code de réponse 200-299),
-            // l'URL existe et est sécurisée
-            console.log('L\'URL existe et est sécurisée.');
-          } else {
-            // Si la réponse n'est pas réussie (code de réponse 400-599),
-            // l'URL peut ne pas exister ou ne pas être sécurisée
-            console.log('L\'URL peut ne pas exister ou ne pas être sécurisée.');
-          }
-        })
-        .catch(error => {
-          // Si une erreur se produit, l'URL peut ne pas exister ou ne pas être sécurisée
-          console.log('L\'URL peut ne pas exister ou ne pas être sécurisée.');
-        });
+      var myHeaders = new Headers();
+myHeaders.append("Accept", "application/json");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow',
+  method:'cors',
+  origin: 'https://www.google.com',
+};
+
+fetch(url, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
 
     },
+
+  
 
 
 
@@ -539,7 +539,8 @@ background: -moz-linear-gradient(299deg, rgba(56,182,255,0.8739205154718137) 0%,
 background: -webkit-linear-gradient(299deg, rgba(56,182,255,0.8739205154718137) 0%, rgba(8,95,206,0.8795227563681722) 16%, rgba(48,5,35,0.9327439594001663) 77%);
 background: linear-gradient(299deg, rgba(56,182,255,0.8739205154718137) 0%, rgba(8,95,206,0.8795227563681722) 16%, rgba(48,5,35,0.9327439594001663) 77%);
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#38b6ff",endColorstr="#300523",GradientType=1);
-
+}
+#backgradient1{
 
     /* background: rgb(56,182,255);
 background: -moz-linear-gradient(126deg, rgba(56,182,255,0.876721635919993) 0%, rgba(8,95,206,0.8571137927827381) 16%, rgba(48,5,35,0.9159373221945029) 100%);
@@ -553,14 +554,14 @@ background: -webkit-linear-gradient(126deg, rgba(56,182,255,0.9159373221945029) 
 background: linear-gradient(126deg, rgba(56,182,255,0.9159373221945029) 0%, rgba(8,95,206,0.8795227563681722) 16%, rgba(48,5,35,0.9355451653317577) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#38b6ff",endColorstr="#300523",GradientType=1); */
 
-/* background: rgb(56,182,255);
+background: rgb(56,182,255);
 background: -moz-linear-gradient(299deg, rgba(56,182,255,0.8739205154718137) 0%, rgba(8,95,206,0.8795227563681722) 16%, rgba(48,5,35,0.9131362017463235) 100%);
 background: -webkit-linear-gradient(299deg, rgba(56,182,255,0.8739205154718137) 0%, rgba(8,95,206,0.8795227563681722) 16%, rgba(48,5,35,0.9131362017463235) 100%);
 background: linear-gradient(299deg, rgba(56,182,255,0.8739205154718137) 0%, rgba(8,95,206,0.8795227563681722) 16%, rgba(48,5,35,0.9131362017463235) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#38b6ff",endColorstr="#300523",GradientType=1); */
-
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#38b6ff",endColorstr="#300523",GradientType=1);
 
 }
+
 
 
 </style>

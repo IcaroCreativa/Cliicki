@@ -77,7 +77,7 @@ Route::prefix('api')->group(function(){
     Route::get('getdataperday',[KpiController::class, 'getdataperday']); 
     Route::get('getcountcommentsbyuser',[PostController::class, 'getCountCommentsByUser']); //recupere le nombre de commentaires d'un utilisateur (il faut passer son id)
    
-    
+    Route::post('checkurl',[PostController::class, 'checkurl']);
 
 
     // Route::post('createpostalert',[PostAlertController::class, 'store']);

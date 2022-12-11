@@ -35,32 +35,31 @@ import MiniPost from '../components/MiniPost.vue';
 </div>
 
 <!-- 3 COLONNES AFFICHAGE DES POSTS + ABOUT -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4">
-    <div class="border-4 rounded-2xl border-bone">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
+    <div class="border-2 rounded-xl border-white bg-[#ffffff13] ">
         <TitreCard :titre="AvisRecents"/>
-        <div v-for="post in lastPosts" class="text-white">
-            
+        <div v-for="post in lastPosts" class="text-white ml-12 mt-4 mb-4">
             <MiniPost :id=post.id />
         </div>
     </div>
 
-    <div class="border-4 rounded-2xl border-downy">
+    <div class="border-2 rounded-xl border-white">
         <TitreCard :titre="MieuxNotes"/>
-        <div v-for="post in bestPosts" class="text-white">
+        <div v-for="post in bestPosts" class="text-white  ml-12 mt-4 mb-4">
             <MiniPost :id=post.id />
         </div>
     </div>
 
-    <div class="border-4 rounded-2xl border-hoki">
+    <div class="border-2 rounded-xl border-white ">
         <TitreCard :titre="PlusCommentes"/>
-        <div v-for="post in popularPosts" class="text-white">
+        <div v-for="post in popularPosts" class="text-white  ml-12 mt-4 mb-4">
             <MiniPost :id=post.id />
         </div>
     </div>
 
-    <div class="bg-oracle rounded-2xl">
+    <!-- <div class="bg-oracle rounded-2xl">
         <About/>
-    </div>
+    </div> -->
 </div>
 
 
@@ -155,3 +154,20 @@ export default {
     
 }
 </script>
+
+<style>
+
+
+#backgradient{
+
+/* background: rgb(56,182,255);
+background: -moz-linear-gradient(299deg, rgba(56,182,255,0.8739205154718137) 0%, rgba(8,95,206,0.8795227563681722) 16%, rgba(48,5,35,0.9327439594001663) 77%);
+background: -webkit-linear-gradient(299deg, rgba(56,182,255,0.8739205154718137) 0%, rgba(8,95,206,0.8795227563681722) 16%, rgba(48,5,35,0.9327439594001663) 77%);
+background: linear-gradient(299deg, rgba(56,182,255,0.8739205154718137) 0%, rgba(8,95,206,0.8795227563681722) 16%, rgba(48,5,35,0.9327439594001663) 77%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#38b6ff",endColorstr="#300523",GradientType=1); */
+background: rgb(122,0,0);
+background: linear-gradient(125deg, rgba(122,0,0,0.7562734566482843) 0%, rgba(175,0,0,0.7646768179928222) 100%);
+}
+
+
+</style>

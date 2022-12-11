@@ -1,39 +1,92 @@
 <template>
 
-<div class="flex text-white text-sm w-[90%] p-1 m-4 px-4 bg-transparent backdrop-blur-md overflow-hidden rounded-md border-2  shadow object-fit">
+<div class="flex text-white  w-[90%]   bg-[#2b0e2c7e] backdrop-blur-md overflow-hidden rounded-md border-[1px]  shadow object-fit">
 
-        <div class=" justify-between p-1 top-0 w-full h-full">
-            <div class="flex justify-between">
-                <a href=""><h1 class=" text-white font-bold">{{this.title}}</h1></a>
-                <div>
-                    <p class="text-xs font-bold">{{this.category}}</p>
-                <img :src="('https://www.google.com/s2/favicons?domain=' + this.favicon)" class="w-6 h-6 mt-2" alt="domain favicon">
-            </div>
-        </div>
-            <div>
-                <p class="text-xs text-gray-400">par {{this.user}} le {{this.date}}</p>
-            </div>
-                <div class="content-start my-2 w-full h-5/6">
-                        <a :href=siteUrl class="text-blue-600 underline ">{{this.siteUrl}}</a>
+        
+            <!-- <div class="flex w-full mx-4 mt-2">
+                
+                <div class=" w-full">
+
+                    <a :href=siteUrl ><p class="text-xl">{{this.nom}}</p></a>
+                    <a href=""><h1 class=" text-white font-bold">{{this.title}}</h1></a>
+                    
+                    
+                    <img :src="('https://www.google.com/s2/favicons?domain=' + this.favicon)" class="w-6 h-6 mt-2" alt="domain favicon">
                 </div>
-            <div class="border border-white mb-1 rounded-lg bg-white bg-opacity-80 text-gray-800 text-sm">
+
+                <div v-for="n in stars_yellow" class="ml-1">
+                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                </div>
+                <div v-for="n in stars_blank" class="ml-1">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                </div>
+                <div class="bg-green-600 flex">
+                 <p class="text-xs font-bold"> Catégorie: {{this.category}}</p>
+                </div>
+            </div>
+            <div>
+                
+            </div> -->
+
+<div class="grid grid-cols-4 grid-rows-5 gap-2">
+
+    <div class="box grid ml-2 w-full">
+        <a :href=siteUrl >
+            <img :src="('https://www.google.com/s2/favicons?domain=' + this.favicon)" class="w-6 h-6 mt-2" alt="domain favicon">    
+        </a>
+    </div>
+
+	<div class="box -ml-12 mt-1 ">
+       <a :href=siteUrl ><p class="text-xl">{{this.nom}}</p></a>  
+    </div>
+   
+
+	<div class="box flex col-span-2 ml-10 mt-2">
+        <div v-for="n in stars_yellow" class="ml-1 ">
+            <svg aria-hidden="true" class="w-5 h-5 text-yellow-400 flex" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+        </div>
+
+        <div v-for="n in stars_blank" class="ml-1">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+        </div>
+
+    </div>
+
+	<div class="box ml-4 mt-4">
+      
+    </div>
+
+	<div class="box">5</div>
+	<div class="box">6</div>
+	<div class="box">7</div>
+	<div class="box"></div>
+	<div class="box">9</div>
+	<div class="box">10</div>
+</div>
+      
+
+
+
+
+
+
+
+        
+            <!-- <div>
+                <p class="text-xs text-gray-400">par {{this.user}} le {{this.date}}</p>
+            </div> -->
+                
+            <!-- <div class="border border-white mb-1 rounded-sm  bg-gray-50 text-black text-sm">
                 <p class="p-1">{{this.firstcomment}} </p>
             </div>
-            <div class="flex justify-end ">
-                <div v-for="n in stars_yellow">
-                        <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        </div>
-                        <div v-for="n in stars_blank">
-                        <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        </div>
-            </div>
-            <div class="flex justify-between">
-            <button v-on:click="seepost" class="border-[#673281] border p-1 rounded-md text-white bg-[#4c4150] hover:opacity-80 transition w-1/4 text-center">
-                see more              
-            </button>
-            <p class="bg-gray-100 p-3 ml-auto text-xs text-gray-800 rounded-md border border-gray-800"> {{this.numberComments}} comments</p>
-        </div>
-        </div>
+           -->
+            <!-- <div class="flex justify-between">
+                <button v-on:click="seepost" class="border-[#673281] border p-1 rounded-md text-white bg-[#4c4150] hover:opacity-80 transition w-1/4 text-center">
+                    see more              
+                </button>
+                <p class="bg-gray-100 p-3 ml-auto text-xs text-gray-800 rounded-md border border-gray-800"> {{this.numberComments}} comments</p>
+            </div> -->
+       
 </div>
 </template>
 
@@ -63,6 +116,7 @@ export default {
             stars_yellow:0,
             stars_blank: 5,
             numberComments:0,
+            nom:'',
 
         }
     },
@@ -76,6 +130,8 @@ export default {
             var url = new URL(url);
             this.favicon = url.hostname;
             var urlParts = url.hostname.split(".");
+            this.nom=url.host
+            this.nom=this.nom
             this.domainName = urlParts[1];
         },
 

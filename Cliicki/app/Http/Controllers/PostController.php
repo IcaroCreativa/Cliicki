@@ -267,6 +267,29 @@ class PostController extends Controller
 
     }
 
+
+    public function checkurl(Request $request){
+
+        // Initialize an URL to the variable
+        $url = $request->url;
+    
+
+  
+// Use curl_init() function to initialize a cURL session
+$curl = curl_init($url);
+  
+// Use curl_setopt() to set an option for cURL transfer
+curl_setopt($curl, CURLOPT_NOBODY, true);
+  
+// Use curl_exec() to perform cURL session
+curl_exec($curl);
+
+$statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); 
+return $statusCode;
+   
+
+}
+
 }
 
 
