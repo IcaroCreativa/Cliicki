@@ -6,7 +6,7 @@
         <label 
             for="default-search" 
             class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
-            Search
+            Chercher
         </label>
 
         <div class="relative grid grid-rows-2 lg:grid-rows-1 w-full lg:w-5/6">
@@ -18,16 +18,16 @@
                 </div>
             <input v-model="search"
                 type="search" id="default-search" 
-                class="flex w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-downy focus:border-downy" 
-                placeholder="Search ..." required>
+                class="flex w-full p-4 pl-10 text text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#1C74C3] focus:border-[#1C74C3]" 
+                placeholder="Chercher ..." required>
 
             <!-- BOUTON SEARCH -->
             <button @click="letsgo()"
                 type="submit" 
-                class="text-gray-800 lg:text-white absolute md:right-1 5 bottom-2.5 w-full md:w-2/6 bg-downy lg:bg-san-juan hover:bg-hoki focus:ring-4 focus:outline-none focus:ring-cardinal font-medium rounded-lg text-sm py-2">
-                Search
+                class="text-white border backdrop-blur-md  lg:text-cardinal absolute md:right-1 5 bottom-2.5 w-full md:w-2/6  lg:bg-transparent hover:bg-white hover:text-blue-900 focus:ring-2 focus:outline-none focus:ring-cardinal font-medium rounded-lg text py-2">
+                Chercher
             </button>
-
+           
             </div>
         </div>
     </div> 

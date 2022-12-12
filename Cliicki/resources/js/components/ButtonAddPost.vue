@@ -6,7 +6,7 @@
             class="grid justify-items-center w-full md:w-3/4 bg-gradient-to-r from-cardinal/50 via-cardinal/70 to-cardinal hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-white shadow-lg shadow-cardinal/50 rounded-lg text-sm text-white lg:px-5 lg:py-2.5">
             <img class=" lg:ml-2 h-10 w-10 md:h-12 md:w-12" 
             src="../images/icon_plus_96.png" alt="Addpost"/>
-            <span class="text-xs md:text-sm lg:text-lg">Add Post</span>
+            <span class="text-xs md:text-sm lg:text-lg"></span>
         </button>  
 
 

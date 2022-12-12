@@ -21,14 +21,14 @@
   
 
       <div class="flex -mt-4">
-          <a href="/allposts" class="flex items-center rounded-lg  px-4 p-1 text-gray-600 hover:bg-gradient-to-r from-red-900 via-red-600 to-red-500 hover:text-white">
+          <a href="/allposts" title="Tous les commentaires" class="flex items-center rounded-lg  px-4 p-1 text-gray-600 hover:bg-gradient-to-r from-red-900 via-red-600 to-red-500 hover:text-white">
             <i class="bi bi-list-stars text-white text-2xl"></i>
           </a>
         </div>
 
       <!-- button addPost -->
       <div class="flex  -mt-4">
-          <a href="/addpost" title="Cliiki home" class="hidden lg:flex">
+          <a href="/addpost" title="Créer un commentaire" class="hidden lg:flex">
               <img src="../images/icon_plus_48.png" alt="Cliiki Logo" class="flex items-center rounded-lg h-9  px-2 p-1 text-gray-600 hover:bg-gradient-to-r from-red-900 via-red-600 to-red-500 hover:text-white">
           </a>
         </div>

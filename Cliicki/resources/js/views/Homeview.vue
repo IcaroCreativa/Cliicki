@@ -20,7 +20,7 @@ import MiniPost from '../components/MiniPost.vue';
             <div class="grid grid-cols-1 md:grid-cols-4 justify-center items-center">
                 <div>
                     <!-- <ButtonAddPost/> -->
-                    <ButtonAddPost id="show-modal" @click="toggleNewPostModal('1')"/>
+                    <ButtonAddPost title="Créer un commentaire" id="show-modal" @click="toggleNewPostModal('1')"/>
                     <!-- <div>
                         <p class="text-white">users id : {{UserId}} </p>
                     </div> -->

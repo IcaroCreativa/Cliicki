@@ -1,9 +1,20 @@
 <template>
 
 <div class="grid  place-items-center">
+  
 
   <form id="backgradient" class=" shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[375px] lg:w-[500px]">
- <!-- ------------------ title ------------------ -->
+    <div class="flex justify-end">
+     
+        <a href="/">
+            <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 stroke-white hover:stroke-red-600">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </a>
+    
+    </div>
+ 
+    <!-- ------------------ title ------------------ -->
  <div class="mb-4">
       <label class="block text-gray-100 font-medium text-lg mb-2" for="title">
         Titre *
@@ -29,7 +40,7 @@
             <div id="backgradient1" class="rounded">
                 <details class = "group py-2 px-2 text-left font-bold mt-3">
                     <summary
-                        class = "flex cursor-pointer px-2 py-2 text-white rounded-sm hover:bg-white hover:text-san-juan"
+                        class = "flex cursor-pointer px-2 py-2 text-white rounded-sm hover:bg-white hover:text-gray-800"
                         >
                         <span class = "text-sm font-medium">Choisissez une Catégorie</span>
                         
@@ -57,19 +68,12 @@
                   &nbsp;{{item.label }}
                   </label>
                 </div>
-                <p v-if="error_categories" class="text-red-200 ml-1 -mt-3 mb-3">{{this.error_message}}</p>
-              
-<!-- title:{{title}}
-url: {{url}}
-box: {{checkedValues}}
-commentaire: {{content}}
-tag: {{tags}}
-stars: {{stars}} -->
-
                 </details>
             </div>
-       
-    </div>
+            <div class="mt-4">
+              <p v-if="error_categories" class="text-red-200 ml-1 -mt-3 mb-3">{{this.error_message}}</p>
+            </div>
+  </div>
 
     <!-- ------------------ COMMENTAIRES ------------------ -->
     <div class="mb-4 mt-6">
@@ -144,15 +148,14 @@ stars: {{stars}} -->
     </div>
    
     <!-- ------------------ VALIDER / CLOSE ------------------ -->
-    <div class="flex items-center justify-between">
-      <button  @click= "createPost()" class="bg-downy hover:bg-san-juan border-4 hover:border-cardinal hover:text-slate-200 text-eagle-green font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+    <div class="flex items-end">
+      <button  @click= "createPost()" class="text-white font-medium  border rounded px-2 py-1 w-36 hover:bg-white hover:text-cardinal " type="button">
         VALIDER
       </button>
-      <router-link to="/">
-      <button class="inline-block align-baseline font-bold text-sm text-cardinal hover:text-eagle-green" @click="$emit('close')">
-        CLOSE
-      </button>
-    </router-link>
+      <a  href="/" class=" text-white underline ml-36  hover:font-medium" type="button">
+        Annuler
+      </a>
+
     </div>
 
   </form>
