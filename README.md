@@ -82,7 +82,7 @@ This application is open-source under the [MIT license](https://opensource.org/l
 
 La version initiale de ce guide a été rédigée par **[@Antonio][1], [@Christelle][2], [@Mathieu][3]** and **[@Nayel][4]**.    
 
-Thanks to @Vetea for her support and advice.
+Thanks to @Vetea for his support and advice.
 
 [1]:https://github.com/IcaroCreativa
 [2]:https://github.com/Christelle97431
